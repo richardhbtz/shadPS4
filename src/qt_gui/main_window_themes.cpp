@@ -3,6 +3,8 @@
 
 #include "main_window_themes.h"
 
+
+
 void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
     QPalette themePalette;
 

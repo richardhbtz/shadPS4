@@ -441,6 +441,7 @@ void MainWindow::CreateConnects() {
 
             cheatsPatches->downloadPatches("GoldHEN", false);
             cheatsPatches->downloadPatches("shadPS4", false);
+            cheatsPatches->downloadPatches("hbtz", false);
 
             eventLoop.exec();
             QMessageBox::information(
@@ -449,6 +450,8 @@ void MainWindow::CreateConnects() {
                         tr("All Patches available for all games have been downloaded.")));
             cheatsPatches->createFilesJson("GoldHEN");
             cheatsPatches->createFilesJson("shadPS4");
+            cheatsPatches->createFilesJson("hbtz");
+
             panelDialog->accept();
         });
         panelDialog->exec();

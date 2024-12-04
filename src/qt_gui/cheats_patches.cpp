@@ -228,6 +228,8 @@ void CheatsPatches::setupUI() {
     patchesComboBox = new QComboBox();
     patchesComboBox->addItem("GoldHEN", "GoldHEN");
     patchesComboBox->addItem("shadPS4", "shadPS4");
+    patchesComboBox->addItem("hbtz", "hbtz");
+
     patchesControlLayout->addWidget(patchesComboBox);
 
     QPushButton* patchesButton = new QPushButton(tr("Download Patches"));
@@ -702,8 +704,11 @@ void CheatsPatches::downloadPatches(const QString repository, const bool showMes
     QString url;
     if (repository == "GoldHEN") {
         url = "https://api.github.com/repos/illusion0001/PS4-PS5-Game-Patch/contents/patches/xml";
+    } 
+    else if (repository == "hbtz"){
+        url = "https://api.github.com/repos/richardhbtz/bb_cheats/contents/PATCHES";
     }
-    if (repository == "shadPS4") {
+    else if (repository == "shadPS4") {
         url = "https://api.github.com/repos/shadps4-emu/ps4_cheats/contents/PATCHES";
     }
     QNetworkAccessManager* manager = new QNetworkAccessManager(this);

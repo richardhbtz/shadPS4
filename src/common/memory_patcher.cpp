@@ -189,7 +189,7 @@ void OnGameLoaded() {
     // We use the QT headers for the xml and json parsing, this define is only true on QT builds
     QString patchDir;
     Common::FS::PathToQString(patchDir, Common::FS::GetUserPath(Common::FS::PathType::PatchesDir));
-    QString repositories[] = {"GoldHEN", "shadPS4"};
+    QString repositories[] = {"GoldHEN", "shadPS4", "hbtz"};
 
     for (const QString& repository : repositories) {
         QString filesJsonPath = patchDir + "/" + repository + "/files.json";
