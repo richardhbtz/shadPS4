@@ -2,11 +2,25 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "main_window_themes.h"
+#include <QMessageBox>
 
+class WindowTheme {
+public:
+    QColor dark;
+    QColor darksoft;
+    QColor light;
+    QColor blue;
+    QColor red;
 
+    WindowTheme(QColor dark, QColor darksoft, QColor light, QColor blue, QColor red)
+        : dark(dark), darksoft(darksoft), light(light), blue(blue), red(red) {}
+};
 
 void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
     QPalette themePalette;
+
+    WindowTheme gruvbox(QColor(29, 32, 33), QColor(60, 56, 54), QColor(249, 245, 215),
+                      QColor(131, 165, 152), QColor(251, 73, 52));
 
     switch (theme) {
     case Theme::Dark:
@@ -14,10 +28,10 @@ void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
                                     "color: #ffffff;"            // White text
                                     "border: 2px solid #ffffff;" // White border
                                     "padding: 5px;");
+
         themePalette.setColor(QPalette::Window, QColor(50, 50, 50));
         themePalette.setColor(QPalette::WindowText, Qt::white);
         themePalette.setColor(QPalette::Base, QColor(20, 20, 20));
-        themePalette.setColor(QPalette::AlternateBase, QColor(25, 25, 25));
         themePalette.setColor(QPalette::AlternateBase, QColor(53, 53, 53));
         themePalette.setColor(QPalette::ToolTipBase, Qt::white);
         themePalette.setColor(QPalette::ToolTipText, Qt::white);
@@ -31,11 +45,40 @@ void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
         qApp->setPalette(themePalette);
         break;
 
+    case Theme::Gruvbox:
+        mw_searchbar->setStyleSheet("background-color: #" + gruvbox.light.name() +
+                                    ";"
+                                    "color: #" +
+                                    gruvbox.light.name() +
+                                    ";"
+                                    "border: 2px solid #" +
+                                    gruvbox.light.name() +
+                                    ";"
+                                    "padding: 5px;");
+
+        themePalette.setColor(QPalette::Window, gruvbox.dark);
+        themePalette.setColor(QPalette::WindowText, gruvbox.light);
+        themePalette.setColor(QPalette::Base, gruvbox.dark);
+        themePalette.setColor(QPalette::AlternateBase, gruvbox.dark);
+        themePalette.setColor(QPalette::ToolTipBase, gruvbox.light);
+        themePalette.setColor(QPalette::ToolTipText, gruvbox.light);
+        themePalette.setColor(QPalette::Text, gruvbox.light);
+        themePalette.setColor(QPalette::Button, gruvbox.dark);
+        themePalette.setColor(QPalette::ButtonText, gruvbox.light);
+        themePalette.setColor(QPalette::BrightText, gruvbox.red);
+        themePalette.setColor(QPalette::Link, gruvbox.blue);
+        themePalette.setColor(QPalette::Highlight, gruvbox.blue);
+        themePalette.setColor(QPalette::HighlightedText, gruvbox.dark);
+
+        qApp->setPalette(themePalette);
+        break;
+
     case Theme::Light:
         mw_searchbar->setStyleSheet("background-color: #ffffff;" // Light gray background
                                     "color: #000000;"            // Black text
                                     "border: 2px solid #000000;" // Black border
                                     "padding: 5px;");
+
         themePalette.setColor(QPalette::Window, QColor(240, 240, 240));   // Light gray
         themePalette.setColor(QPalette::WindowText, Qt::black);           // Black
         themePalette.setColor(QPalette::Base, QColor(230, 230, 230, 80)); // Grayish
@@ -69,7 +112,8 @@ void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
         themePalette.setColor(QPalette::BrightText, Qt::red);        // Bright red text for alerts
         themePalette.setColor(QPalette::Link, QColor(42, 130, 218)); // Light blue links
         themePalette.setColor(QPalette::Highlight, QColor(42, 130, 218)); // Light blue highlight
-        themePalette.setColor(QPalette::HighlightedText, Qt::black);      // Black highlighted text
+        themePalette.setColor(QPalette::HighlightedText,
+                              Qt::black); // Black highlighted text
 
         qApp->setPalette(themePalette);
         break;
@@ -92,7 +136,8 @@ void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
         themePalette.setColor(QPalette::BrightText, Qt::red);        // Bright red text for alerts
         themePalette.setColor(QPalette::Link, QColor(42, 130, 218)); // Light blue links
         themePalette.setColor(QPalette::Highlight, QColor(42, 130, 218)); // Light blue highlight
-        themePalette.setColor(QPalette::HighlightedText, Qt::black);      // Black highlighted text
+        themePalette.setColor(QPalette::HighlightedText,
+                              Qt::black); // Black highlighted text
 
         qApp->setPalette(themePalette);
         break;
@@ -115,7 +160,8 @@ void WindowThemes::SetWindowTheme(Theme theme, QLineEdit* mw_searchbar) {
         themePalette.setColor(QPalette::BrightText, Qt::red);          // Bright red text for alerts
         themePalette.setColor(QPalette::Link, QColor(42, 130, 218));   // Light blue links
         themePalette.setColor(QPalette::Highlight, QColor(42, 130, 218)); // Light blue highlight
-        themePalette.setColor(QPalette::HighlightedText, Qt::black);      // Black highlighted text
+        themePalette.setColor(QPalette::HighlightedText,
+                              Qt::black); // Black highlighted text
 
         qApp->setPalette(themePalette);
         break;

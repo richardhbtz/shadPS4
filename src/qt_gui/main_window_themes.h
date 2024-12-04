@@ -10,6 +10,7 @@
 enum class Theme : int {
     Dark,
     Light,
+    Gruvbox,
     Green,
     Blue,
     Violet,

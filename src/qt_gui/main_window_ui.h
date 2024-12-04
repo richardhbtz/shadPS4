@@ -33,6 +33,7 @@ public:
     QAction* configureAct;
     QAction* setThemeDark;
     QAction* setThemeLight;
+    QAction* setThemeGruvbox;
     QAction* setThemeGreen;
     QAction* setThemeBlue;
     QAction* setThemeViolet;
@@ -146,6 +147,9 @@ public:
         setThemeDark->setObjectName("setThemeDark");
         setThemeDark->setCheckable(true);
         setThemeDark->setChecked(true);
+        setThemeGruvbox = new QAction(MainWindow);
+        setThemeGruvbox->setObjectName("setThemeGruvbox");
+        setThemeGruvbox->setCheckable(true);
         setThemeLight = new QAction(MainWindow);
         setThemeLight->setObjectName("setThemeLight");
         setThemeLight->setCheckable(true);
@@ -282,6 +286,7 @@ public:
         menuThemes->addAction(setThemeGreen);
         menuThemes->addAction(setThemeBlue);
         menuThemes->addAction(setThemeViolet);
+        menuThemes->addAction(setThemeGruvbox);
         menuGame_List_Icons->addAction(setIconSizeTinyAct);
         menuGame_List_Icons->addAction(setIconSizeSmallAct);
         menuGame_List_Icons->addAction(setIconSizeMediumAct);
@@ -365,6 +370,7 @@ public:
         menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
         setThemeDark->setText(QCoreApplication::translate("MainWindow", "Dark", nullptr));
         setThemeLight->setText(QCoreApplication::translate("MainWindow", "Light", nullptr));
+        setThemeGruvbox->setText(QCoreApplication::translate("MainWindow", "Gruvbox", nullptr));
         setThemeGreen->setText(QCoreApplication::translate("MainWindow", "Green", nullptr));
         setThemeBlue->setText(QCoreApplication::translate("MainWindow", "Blue", nullptr));
         setThemeViolet->setText(QCoreApplication::translate("MainWindow", "Violet", nullptr));

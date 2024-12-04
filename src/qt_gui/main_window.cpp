@@ -108,6 +108,7 @@ void MainWindow::CreateActions() {
     m_theme_act_group = new QActionGroup(this);
     m_theme_act_group->addAction(ui->setThemeDark);
     m_theme_act_group->addAction(ui->setThemeLight);
+    m_theme_act_group->addAction(ui->setThemeGruvbox);
     m_theme_act_group->addAction(ui->setThemeGreen);
     m_theme_act_group->addAction(ui->setThemeBlue);
     m_theme_act_group->addAction(ui->setThemeViolet);
@@ -519,6 +520,14 @@ void MainWindow::CreateConnects() {
             isIconBlack = true;
         }
     });
+    connect(ui->setThemeGruvbox, &QAction::triggered, &m_window_themes, [this]() {
+        m_window_themes.SetWindowTheme(Theme::Gruvbox, ui->mw_searchbar);
+        Config::setMainWindowTheme(static_cast<int>(Theme::Gruvbox));
+        if (isIconBlack) {
+            SetUiIcons(false);
+            isIconBlack = false;
+        }
+    });
     connect(ui->setThemeGreen, &QAction::triggered, &m_window_themes, [this]() {
         m_window_themes.SetWindowTheme(Theme::Green, ui->mw_searchbar);
         Config::setMainWindowTheme(static_cast<int>(Theme::Green));
@@ -892,6 +901,11 @@ void MainWindow::SetLastUsedTheme() {
     m_window_themes.SetWindowTheme(lastTheme, ui->mw_searchbar);
 
     switch (lastTheme) {
+    case Theme::Gruvbox:
+        ui->setThemeGruvbox->setChecked(true);
+        isIconBlack = false;
+        SetUiIcons(false);
+        break;
     case Theme::Light:
         ui->setThemeLight->setChecked(true);
         isIconBlack = true;
