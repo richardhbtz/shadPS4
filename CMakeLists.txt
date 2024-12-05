@@ -4,6 +4,8 @@
 # Version 3.24 needed for FetchContent OVERRIDE_FIND_PACKAGE
 cmake_minimum_required(VERSION 3.24)
 
+set(CMAKE_POLICY_DEFAULT_CMP0069 NEW)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
